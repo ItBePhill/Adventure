@@ -27,9 +27,8 @@ int main() {
 
 	else if (characterType == "scout"){
 		cout <<
-			"You stumble onto your feet and pick up the Dagger it's blunt and the leather grip falls apart as you grab it, but it must do for now\n";
+			"You stumble onto your feet and pick up the dagger it's blunt and the leather grip falls apart as you grab it, but it must do for now\n";
 	}
-
 	system("pause");
 
 	cout <<
@@ -44,18 +43,44 @@ int main() {
 		cin >> riddleAnswer;
 		if (riddleAnswer != "cold" and riddleAnswer != "bus" and riddleAnswer != "train") {
 			cout <<
-				"You shout: " << riddleAnswer << "But the voice doesn't answer, a wave of dread fills you, the door slides open but instead of the entrance, two jets of fire shoot out at you";
+				"You shout: '" << riddleAnswer << "'\nBut the voice doesn't answer, a wave of dread fills you, the door slides open but instead of the entrance, two jets of fire shoot out at you\n";
 			if (characterType == "scout") {
+				if ((characterHealth - 10) <= 0) {
+					cout <<
+						"The Fire engulfs you, and you get cooked alive, left as a steaming pile of ash\n";
+
+					cout << "YOU DIED\n";
+					system("pause");
+					quick_exit(0);
+				}
 				cout <<
-					"But you jump out of the way before it can do much damage but you still manage to get a large burn on your arm (you lose 10 hp) the door slams shut and the voice booms 'Try Again'\n";
-					characterHealth -= 10;
+					"But with your superior dexterity you jump out of the way before it can do much damage but you still manage to get a large burn on your arm (you lose 10 hp). \nthe door slams shut and the voice booms 'Try Again'\n";
+				characterHealth -= 10;
+				cout << "HP: " << characterHealth;
 			}
 			else {
+				if ((characterHealth - 20) <= 0) {
+					cout <<
+						"The Fire engulfs you, and you get cooked alive, left as a steaming pile of ash\n";
+
+					cout << "YOU DIED\n";
+					system("pause");
+					quick_exit(0);
+				}
 				cout <<
-					"The fire scorches your entire body and leaves you covered in burns (you lose 20 hp)";
+					"The fire scorches your entire body and leaves you covered in burns (you lose 20 hp)\nthe door slams shut and the voice booms 'Try Again'\n";
 				characterHealth -= 20;
+				cout << "HP: " << characterHealth;
 			}
 			continue;
+
+		}
+		else {
+			cout <<
+				"The voice booms: 'That is correct you may now pass'\n"
+				"The door slides open, scraping against the stone floor\n"
+				"You enter the cave it's walls stretch further than the eye can see\n";
+			system("pause");
 		}
 	}
 
